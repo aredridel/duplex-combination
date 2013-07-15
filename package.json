@@ -1,0 +1,23 @@
+{
+  "name": "duplex-combination",
+  "description": "Combine a readable and writable stream into a duplex stream",
+  "version": "0.1.0",
+  "license": "BSD",
+  "scripts": {
+    "test": "node t.js"
+  },
+  "author": "Aria Stewart <aredridel@nbtsc.org>",
+  "main": "dc.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/aredridel/duplex-combination"
+  },
+  "keywords": [
+    "stream",
+    "streams2",
+    "duplex"
+  ],
+  "bugs": {
+    "url": "https://github.com/aredridel/duplex-combination/issues"
+  }
+}
