@@ -19,8 +19,13 @@ Duplex.call(this, options);
 
 this.wrapStreams(reader, writer);
 
-this._reader.on('error', this.emit.bind(this));
-this._writer.on('error', this.emit.bind(this));
+var duplex = this;
+this._reader.on('error', function (error) {
+    duplex.emit('error', error);
+});
+this._writer.on('error', function (error) {
+    duplex.emit('error', error);
+});
 
 this._readableState = this._reader._readableState;
 this._writableState = this._writer._writableState;
