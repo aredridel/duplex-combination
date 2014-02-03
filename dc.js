@@ -1,8 +1,9 @@
+"use strict";
 module.exports = DuplexCombination;
 
 var util = require('util');
 
-var assert = require('assert')
+var assert = require('assert');
 var stream = require('stream');
 var Duplex = stream.Duplex;
 
