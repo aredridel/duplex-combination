@@ -46,10 +46,12 @@ this._writer.read(0);
   case 'data':
   case 'end':
   case 'readable':
-return this._reader.on(ev, fn);
+this._reader.on(ev, fn);
+return this
   case 'drain':
   case 'finish':
-return this._writer.on(ev, fn);
+this._writer.on(ev, fn);
+return this
   default:
 return Duplex.prototype.on.call(this, ev, fn);
     }
