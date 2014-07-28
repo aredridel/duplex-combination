@@ -14,18 +14,18 @@ util.inherits(DuplexCombination, Duplex);
 return new DuplexCombination(reader, writer, options);
 
 
-this._reader = reader;
-this._writer = writer;
+this.reader = reader;
+this.writer = writer;
 Duplex.call(this, options);
 
 this.wrapStreams(reader, writer);
 
 var duplex = this;
-this._reader.on('error', function (error) {
-    duplex.emit('error', error);
+this.reader.on('error', function (error) {
+    duplex.emit('error', error, duplex.reader);
 });
-this._writer.on('error', function (error) {
-    duplex.emit('error', error);
+this.writer.on('error', function (error) {
+    duplex.emit('error', error, duplex.writer);
 });
 
 this._readableState = this._reader._readableState;
@@ -36,8 +36,8 @@ this._writableState = this._writer._writableState;
   DuplexCombination.prototype.wrapStreams = function(reader, writer) {
 assert(reader instanceof stream.Readable || reader instanceof stream.Duplex, 'reader must be a Readable stream');
 assert(writer instanceof stream.Writable || writer instanceof stream.Duplex, 'writer must be a Writable stream');
-this._reader.read(0);
-this._writer.read(0);
+this.reader.read(0);
+this.writer.read(0);
   };
 
 
