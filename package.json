@@ -1,7 +1,7 @@
 {
   "name": "duplex-combination",
   "description": "Combine a readable and writable stream into a duplex stream",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "license": "BSD",
   "scripts": {
     "test": "node t.js"
