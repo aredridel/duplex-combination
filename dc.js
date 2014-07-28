@@ -28,8 +28,8 @@ this.writer.on('error', function (error) {
     duplex.emit('error', error, duplex.writer);
 });
 
-this._readableState = this._reader._readableState;
-this._writableState = this._writer._writableState;
+this._readableState = this.reader._readableState;
+this._writableState = this.writer._writableState;
     }
 
 
@@ -46,11 +46,11 @@ this.writer.read(0);
   case 'data':
   case 'end':
   case 'readable':
-this._reader.on(ev, fn);
+this.reader.on(ev, fn);
 return this
   case 'drain':
   case 'finish':
-this._writer.on(ev, fn);
+this.writer.on(ev, fn);
 return this
   default:
 return Duplex.prototype.on.call(this, ev, fn);
@@ -60,21 +60,21 @@ return Duplex.prototype.on.call(this, ev, fn);
 DuplexCombination.prototype.addListener = DuplexCombination.prototype.on;
 
   DuplexCombination.prototype.pipe = function(dest, opts) {
-return this._reader.pipe(dest, opts);
+return this.reader.pipe(dest, opts);
   };
 
   DuplexCombination.prototype.setEncoding = function(enc) {
-return this._reader.setEncoding(enc);
+return this.reader.setEncoding(enc);
   };
 
   DuplexCombination.prototype.read = function(size) {
-return this._reader.read(size);
+return this.reader.read(size);
   };
 
   DuplexCombination.prototype.end = function(chunk, enc, cb) {
-return this._writer.end(chunk, enc, cb);
+return this.writer.end(chunk, enc, cb);
   };
 
   DuplexCombination.prototype.write = function(chunk, enc, cb) {
-return this._writer.write(chunk, enc, cb);
+return this.writer.write(chunk, enc, cb);
   };
