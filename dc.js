@@ -34,8 +34,8 @@ this._writableState = this.writer._writableState;
 
 
   DuplexCombination.prototype.wrapStreams = function(reader, writer) {
-assert(reader instanceof stream.Readable || reader instanceof stream.Duplex, 'reader must be a Readable stream');
-assert(writer instanceof stream.Writable || writer instanceof stream.Duplex, 'writer must be a Writable stream');
+assert(reader.read && reader.on && reader.pipe && reader.setEncoding, 'reader must be a Readable stream');
+assert(writer.read && writer.on && writer.end && writer.write, 'writer must be a Writable stream');
 this.reader.read(0);
 this.writer.read(0);
   };
